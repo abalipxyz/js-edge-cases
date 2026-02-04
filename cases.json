@@ -84,13 +84,13 @@
     "title": { "ko": "콤마 연산자의 마법", "en": "The Comma Operator Trick" },
     "desc": { "ko": "괄호 안의 쉼표는 무엇을 남길까", "en": "What does the comma leave behind?" },
     "code": "let x = (1, 2, 3);\nconsole.log(x);",
-    "challenge": { "ko": "x에 담길 숫자는?", en: "What is the value of x?" },
+    "challenge": { "ko": "x에 담길 숫자는?", "en": "What is the value of x?" },
     "result": { "ko": "3 <br><small>콤마(,) 연산자는 왼쪽부터 차례대로 실행하고 마지막 값을 반환합니다. 생각보다 유용하지만 읽기엔 최악이죠.</small>", "en": "3 <br><small>The comma operator evaluates each operand and returns the last one.</small>" }
   },
   {
     "id": "sec12",
     "title": { "ko": "배열 더하기 배열", "en": "Array + Array" },
-    "desc": { "ko": "배열 두 개를 더하면?", en: "Adding two arrays" },
+    "desc": { "ko": "배열 두 개를 더하면?", "en": "Adding two arrays" },
     "code": "[] + [];",
     "challenge": { "ko": "새로운 배열이 생길까요?", "en": "Will it create a new array?" },
     "result": { "ko": "\"\" (빈 문자열) <br><small>배열이 원시 값으로 변환되는 과정에서 빈 문자열이 되고, \"\" + \"\" 가 실행됩니다.</small>", "en": "\"\" (Empty string) <br><small>Arrays are coerced into empty strings, resulting in \"\" + \"\".</small>" }
@@ -98,7 +98,7 @@
   {
     "id": "sec13",
     "title": { "ko": "숫자 뒤의 점 두 개", "en": "The Double Dot Trick" },
-    "desc": { "ko": "1..toString()은 문법 오류일까?", en: "Is 1..toString() a syntax error?" },
+    "desc": { "ko": "1..toString()은 문법 오류일까?", "en": "Is 1..toString() a syntax error?" },
     "code": "1..toString();\n1.toString(); // Error?",
     "challenge": { "ko": "어느 쪽이 에러일까요?", "en": "Which one throws an error?" },
     "result": { "ko": "1.toString()이 에러! <br><small>점 하나는 소수점으로 인식되어 에러가 나지만, 두 개를 찍으면 첫 번째는 소수점, 두 번째는 메서드 호출로 인식됩니다.</small>", "en": "1.toString() throws an error! <br><small>The first dot is treated as a decimal point. Double dots allow method calls on literals.</small>" }
