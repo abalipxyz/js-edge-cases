@@ -21,47 +21,27 @@
       background: var(--bg-primary); color: var(--text-primary);
       line-height: 1.6; overflow-x: hidden;
     }
-    .lang-switch {
+
+    /* Header & Controls */
+    .header-controls {
       position: fixed; top: 20px; right: 20px; z-index: 1000;
-      background: var(--card-bg); border: 1px solid var(--accent);
-      padding: 5px; border-radius: 8px; backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 8px; backdrop-filter: blur(10px);
+      display: flex; align-items: center; gap: 8px;
     }
     .lang-btn {
       background: transparent; border: none; color: var(--text-secondary);
-      padding: 5px 10px; cursor: pointer; transition: 0.3s; font-family: inherit;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
+      padding: 5px 10px; cursor: pointer; transition: 0.3s; font-family: inherit; font-size: 0.9rem;
     }
     .lang-btn.active { color: var(--accent); font-weight: bold; }
-
-    .header { padding: 80px 40px 60px; text-align: center; }
-    .header-controls {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      z-index: 1000;
-    }
     .github-link {
-      display: flex;
-      align-items: center;
-      margin-left: 8px;
-      padding-left: 8px;
-      border-left: 1px solid var(--border);
-      opacity: 0.7;
-      transition: 0.3s;
+      display: flex; align-items: center; margin-left: 8px; padding-left: 8px;
+      border-left: 1px solid var(--border); opacity: 0.7; transition: 0.3s;
     }
-    .github-link:hover {
-      opacity: 1;
-      transform: scale(1.1);
-    }
+    .github-link:hover { opacity: 1; transform: scale(1.1); }
 
+    /* Layout */
+    .header { padding: 100px 40px 60px; text-align: center; }
     h1 {
       font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400;
       background: linear-gradient(90deg, var(--accent), #ffffff);
@@ -81,33 +61,31 @@
 
     .section { max-width: 900px; margin: 60px auto; padding: 0 20px; opacity: 0; transform: translateY(30px); transition: 0.6s; }
     .section.visible { opacity: 1; transform: translateY(0); }
-
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 40px; }
     .code-block {
       background: #000; border-radius: 12px; padding: 20px; margin: 20px 0;
       color: #e0e0e0; font-size: 1.1rem; border-left: 4px solid var(--accent);
       overflow-x: auto;
     }
-    .code-block b { color: var(--accent); text-shadow: 0 0 5px var(--accent-glow); }
     .challenge { color: var(--accent); margin-bottom: 20px; font-weight: 300; }
     .reveal-btn {
       background: transparent; color: var(--accent); border: 1px solid var(--accent);
-      padding: 10px 25px; border-radius: 8px; cursor: pointer; transition: 0.3s;
+      padding: 10px 25px; border-radius: 8px; cursor: pointer; transition: 0.3s; font-family: inherit;
     }
     .reveal-btn:hover { background: var(--accent); color: #000; }
     .spoiler { display: none; margin-top: 20px; padding: 20px; background: rgba(0,212,255,0.1); border-radius: 12px; border: 1px dashed var(--accent); }
-    pre { font-family: inherit; }
 
-    .suggest-section {
-      max-width: 900px;
-      margin: 100px auto 40px;
-      padding: 0 20px;
+    .suggest-section { max-width: 900px; margin: 100px auto 40px; padding: 0 20px; }
+
+    @media (max-width: 600px) {
+      .header-controls { top: 10px; right: 10px; padding: 4px 8px; }
+      .header { padding-top: 60px; }
     }
   </style>
 </head>
 <body>
 
-<div class="lang-switch">
+<div class="header-controls">
   <button id="btn-ko" class="lang-btn" onclick="setLang('ko')">KO</button>
   <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
   <a href="https://github.com/kangjung/js-edge-cases" target="_blank" class="github-link" title="View on GitHub">
@@ -117,8 +95,7 @@
 
 <header class="header">
   <h1 data-ko="자바스크립트 엣지 케이스" data-en="JavaScript Edge Cases">자바스크립트 엣지 케이스</h1>
-  <p class="subtitle"
-     data-ko="상식은 잠시 접어두세요. 자바스크립트의 기묘한 세계에 오신 것을 환영합니다."
+  <p data-ko="상식은 잠시 접어두세요. 자바스크립트의 기묘한 세계에 오신 것을 환영합니다."
      data-en="Leave your common sense behind. Welcome to the weird world of JavaScript.">
     상식은 잠시 접어두세요. 자바스크립트의 기묘한 세계에 오신 것을 환영합니다.
   </p>
@@ -126,6 +103,7 @@
 
 <nav class="nav-grid" id="navGrid"></nav>
 <main id="content"></main>
+
 <section class="suggest-section">
   <div class="card" style="text-align: center; border-style: dashed; border-width: 2px;">
     <h2 data-ko="새로운 케이스 제보하기" data-en="Suggest a New Case">새로운 케이스 제보하기</h2>
@@ -146,59 +124,60 @@
 
 <script>
   let cases = [];
-  
+
   async function loadCases() {
-    const content = document.getElementById('content');
-    const navGrid = document.getElementById('navGrid');
-    
     try {
-      // GitHub Pages 배포 시 상대 경로 './cases.json' 사용 가능
       const response = await fetch('./cases.json');
-      if (!response.ok) throw new Error('Network response was not ok');
+      if (!response.ok) throw new Error('Failed to fetch cases.json');
       cases = await response.json();
       render();
     } catch (error) {
-      console.error("Failed to load cases:", error);
-      content.innerHTML = `<div style="text-align:center; padding:50px;">
-        <p>Error loading cases. Please check if cases.json exists.</p>
-      </div>`;
+      console.error("Error:", error);
+      document.getElementById('content').innerHTML = `<p style="text-align:center;">Failed to load cases.</p>`;
     }
   }
+
   function getLangText(field, lang) {
     if (!field) return "";
-    return field[lang] || field['en'] || "";
+    return field[lang] || field[lang === 'ko' ? 'en' : 'ko'] || "";
   }
-  
+
   function render() {
     const lang = localStorage.getItem('lang') || 'en';
     const navGrid = document.getElementById('navGrid');
     const content = document.getElementById('content');
-  
-    if (cases.length === 0) return;
-    
-    navGrid.innerHTML = cases.map(c => `
-      <a href="#${c.id}" class="nav-item">
-        <h3>${getLangText(c.title, lang)}</h3>
-        <p>${getLangText(c.desc, lang)}</p>
-      </a>
-    `).join('');
-    
-    content.innerHTML = cases.map(c => `
-      <section id="${c.id}" class="section">
-        <div class="card">
-          <h2>${getLangText(c.title, lang)}</h2>
-          <div class="code-block"><pre>${c.code}</pre></div>
-          <div class="challenge">${getLangText(c.challenge, lang)}</div>
-          <button class="reveal-btn" onclick="toggleSpoiler('${c.id}_ans')">
-            ${lang === 'ko' ? '결과 보기' : 'Reveal Result'}
-          </button>
-          <div id="${c.id}_ans" class="spoiler">${getLangText(c.result, lang)}</div>
-        </div>
-      </section>
-    `).join('');
-    
+
+    navGrid.innerHTML = cases.map((c, i) => {
+      const safeId = c.id || `case-${i}`;
+      return `
+        <a href="#${safeId}" class="nav-item">
+          <h3>${getLangText(c.title, lang)}</h3>
+          <p>${getLangText(c.desc, lang)}</p>
+        </a>
+      `;
+    }).join('');
+
+    content.innerHTML = cases.map((c, i) => {
+      const safeId = c.id || `case-${i}`;
+      return `
+        <section id="${safeId}" class="section">
+          <div class="card">
+            <h2>${getLangText(c.title, lang)}</h2>
+            <div class="code-block"><pre>${c.code}</pre></div>
+            <div class="challenge">${getLangText(c.challenge, lang)}</div>
+            <button class="reveal-btn" onclick="toggleSpoiler('${safeId}_ans')">
+              ${lang === 'ko' ? '결과 보기' : 'Reveal Result'}
+            </button>
+            <div id="${safeId}_ans" class="spoiler">${getLangText(c.result, lang)}</div>
+          </div>
+        </section>
+      `;
+    }).join('');
+
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible'));
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
     }, { threshold: 0.1 });
     document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
   }
@@ -206,24 +185,24 @@
   function setLang(lang) {
     localStorage.setItem('lang', lang);
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  
-    const activeBtn = document.getElementById("btn-" + lang);
-    if(activeBtn) activeBtn.classList.add('active');
-  
+    document.getElementById("btn-" + lang)?.classList.add('active');
     document.querySelectorAll('[data-en]').forEach(el => {
-      el.textContent = el.getAttribute(`data-${lang}`);
+      const targetText = el.getAttribute(`data-${lang}`);
+      const span = el.querySelector('span');
+      if (span) span.innerText = targetText;
+      else el.innerText = targetText;
     });
+
     if (cases.length > 0) render();
   }
 
   function toggleSpoiler(id) {
     const el = document.getElementById(id);
-    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
   }
 
   window.onload = () => {
-    const savedLang = localStorage.getItem('lang') || 'en';
-    setLang(savedLang);
+    setLang(localStorage.getItem('lang') || 'en');
     loadCases();
   };
 </script>
