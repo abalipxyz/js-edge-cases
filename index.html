@@ -118,7 +118,35 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 20px;
       margin-bottom: 20px;
+    }
+
+    .text-group {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .text-group h2 {
+      word-break: keep-all;
+      line-height: 1.3;
+    }
+
+    .text-group .case-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 6px;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 480px) {
+      .card-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .share-btn {
+        align-self: flex-end;
+      }
     }
     .share-btn {
       background: transparent;
@@ -138,7 +166,7 @@
       color: var(--accent);
       background: rgba(0, 212, 255, 0.1);
     }
-    /* 복사 완료 토스트 알림 (선택 사항) */
+
     .toast {
       position: fixed;
       bottom: 20px;
@@ -235,6 +263,7 @@
     content.innerHTML = cases.map((c, i) => {
       const safeId = c.id || `case-${i}`;
       const title = getLangText(c.title, lang);
+      const desc = getLangText(c.desc, lang);
       let localizedMdnUrl = c.mdnUrl;
       if (localizedMdnUrl) {
         const langCode = lang === 'ko' ? '/ko/' : '/en-US/';
@@ -264,8 +293,11 @@
         <section id="${safeId}" class="section">
           <div class="card">
             <div class="card-header">
-              <h2>${title}</h2>
-              ${shareButton}
+                <div class="text-group">
+                  <h2>${title}</h2>
+                  <p class="case-desc">${desc}</p>
+                </div>
+                ${shareButton}
             </div>
             <div class="code-block"><pre>${c.code}</pre></div>
             <div class="challenge">${getLangText(c.challenge, lang)}</div>
