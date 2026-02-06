@@ -192,7 +192,7 @@
     "mdnUrl": "https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is"
   },
   {
-    "title": { "ko": "최대 안전 정수의 배신", "en": "The MAX_SAFE_INTEGER Betrayal" },
+    "title": { "ko": "MAX_SAFE_INTEGER의 배신", "en": "The MAX_SAFE_INTEGER Betrayal" },
     "desc": { "ko": "너무 큰 숫자는 구분이 안 된다?", "en": "Big numbers lose their identity" },
     "code": "const x = 9007199254740991;\nx + 1 === x + 2;",
     "challenge": { "ko": "결과는 true일까요, false일까요?", "en": "Is it true or false?" },
@@ -238,17 +238,5 @@
     },
     "specUrl": "https://tc39.es/ecma262/#sec-parseint-string-radix",
     "mdnUrl": "https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/parseInt"
-  },
-  {
-    "title": { "ko": "함수 이름의 읽기 전용 특성", "en": "Read-only Function Names" },
-    "desc": { "ko": "함수 이름을 강제로 바꾸면?", "en": "Can we rename a function?" },
-    "code": "function foo() {}\nfoo.name = 'bar';\nconsole.log(foo.name);",
-    "challenge": { "ko": "이름이 'bar'로 바뀌어 있을까요?", "en": "Will the name be 'bar'?" },
-    "result": {
-      "ko": "\"foo\" <br><small>함수 객체의 name 속성은 설정 불가능(Configurable: false)한 읽기 전용 속성입니다. 에러는 나지 않지만 무시됩니다.</small>",
-      "en": "\"foo\" <br><small>The 'name' property of a function object is read-only and non-configurable by default. Assignments are silently ignored.</small>"
-    },
-    "specUrl": "https://tc39.es/ecma262/#sec-function-instances-name",
-    "mdnUrl": "https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/name"
   }
 ]
